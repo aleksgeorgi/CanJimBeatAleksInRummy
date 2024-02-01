@@ -27,8 +27,8 @@ _disclaimer: the dates are artificially created to capture the chronological pro
 
 - Jim's mean: 47.9
 - Aleks' mean: 78.6
-- Jim's variance: 6186.99
-- Aleks' variacnce: 1633.38
+- Jim's variance: 6186.99 | stddev: 78.66
+- Aleks' variacnce: 1633.38 | stddev: 40.42
 - Jim's Scores IQR: 124.25
 - Aleks's Scores IQR: 60.75
 - Jim's Scores Outliers Count: 0
