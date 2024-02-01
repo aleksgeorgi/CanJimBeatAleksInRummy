@@ -6,7 +6,7 @@ This repository documents the epic clash of two card connoisseurs in the game of
 
 ## Data
 
-_disclaimer: the date's are artificially created to capture the chronological progression of each game_
+_disclaimer: the dates are artificially created to capture the chronological progression of each game_
 
 | date       | jim_scores | aleks_scores | jim_running_sum | aleks_running_sum |
 | ---------- | ---------- | ------------ | --------------- | ----------------- |
