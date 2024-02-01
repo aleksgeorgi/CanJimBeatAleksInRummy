@@ -21,6 +21,10 @@ _disclaimer: the dates are artificially created to capture the chronological pro
 | 2023-01-09 | 73         | 96           | 379             | 641               |
 | 2023-01-10 | 100        | 145          | 479             | 786               |
 
+## Press
+
+Feb, 2024 ["Aces High: The Riveting Rummy Rivalry of Hackland vs. Georgievska"](https://github.com/aleksgeorgi/CanJimBeatAleksInRummy/blob/main/press/rummy_illustrated.md)
+
 ## Analysis
 
 **Summary Statistics**:
