@@ -1,4 +1,6 @@
-## By J. P. Scott, Rummy Correspondent for Rummy Illustrated
+# "Aces High: The Riveting Rummy Rivalry of Hackland vs. Georgievska"
+
+### By J. P. Scott, Rummy Correspondent for Rummy Illustrated
 
 ![github](https://github.com/aleksgeorgi/CanJimBeatAleksInRummy/blob/main/press/photos/DALLE2024-02-01132953JimFourAcesHackland.png)
 [Image: Jim "Four Aces" Hackland in a triumphant pose]
