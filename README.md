@@ -40,22 +40,22 @@ This repository documents the epic clash of two card connoisseurs in the game of
 
 - **Data Visualizations**:
 
-![histogram](https://github.com/aleksgeorgi/CanJimBeatAleksInRummy/blob/main/scores_histogram.png)
-![boxplot](https://github.com/aleksgeorgi/CanJimBeatAleksInRummy/blob/main/scores_box_plt.png)
+![histogram](https://github.com/aleksgeorgi/CanJimBeatAleksInRummy/blob/main/plots/scores_histogram.png)
+![boxplot](https://github.com/aleksgeorgi/CanJimBeatAleksInRummy/blob/main/plots/scores_box_plt.png)
 
 - **Time Series Analysis**:
 
 individual scores over time
-![time series](https://github.com/aleksgeorgi/CanJimBeatAleksInRummy/blob/main/scores_over_time_plt.png)
+![time series](https://github.com/aleksgeorgi/CanJimBeatAleksInRummy/blob/main/plots/scores_over_time_plt.png)
 
 running scores over time
-![running scores over time](https://github.com/aleksgeorgi/CanJimBeatAleksInRummy/blob/main/running_scores_over_time.png)
+![running scores over time](https://github.com/aleksgeorgi/CanJimBeatAleksInRummy/blob/main/plots/running_scores_over_time.png)
 
 - **Linear Regression Prediction**:
   - Jim is predicted to reach 3000 points at game number: [53]
   - Aleks is predicted to reach 3000 points at game number: [44]
 
-![prediction plot]()
+![prediction plot](https://github.com/aleksgeorgi/CanJimBeatAleksInRummy/blob/main/plots/rummy_winner_prediction.png)
 
 ## Conclusion
 
