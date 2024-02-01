@@ -22,6 +22,7 @@ This repository documents the epic clash of two card connoisseurs in the game of
 ## Analysis
 
 - **Summary Statistics**:
+
   - Jim's mean: 47.9
   - Aleks' mean: 78.6
   - Jim's variance: 6186.99
@@ -30,8 +31,7 @@ This repository documents the epic clash of two card connoisseurs in the game of
   - Aleks's Scores IQR: 60.75
   - Jim's Scores Outliers Count: 0
   - Aleks's Scores Outliers Count: 0
-
-Jim's scores, having a substantially higher IQR, can imply that his performance is more inconsistent or subject to a wider range of influencing factors. Aleks's more consistent scores on the other hand, seen through a lower IQR, can suggest a narrower influence of external factors or a more stable performance across measurements.
+    - Iterpretation: Jim's scores, having a substantially higher IQR, can imply that his performance is more inconsistent or subject to a wider range of influencing factors. Aleks's more consistent scores on the other hand, seen through a lower IQR, can suggest a narrower influence of external factors or a more stable performance across measurements.
 
 - **Positive/Negative Ratio**:
 
@@ -54,6 +54,8 @@ running scores over time
 - **Linear Regression Prediction**:
   - Jim is predicted to reach 3000 points at game number: [53]
   - Aleks is predicted to reach 3000 points at game number: [44]
+
+![prediction plot]()
 
 ## Conclusion
 
