@@ -21,39 +21,42 @@ This repository documents the epic clash of two card connoisseurs in the game of
 
 ## Analysis
 
-- **Summary Statistics**:
+**Summary Statistics**:
 
-  - Jim's mean: 47.9
-  - Aleks' mean: 78.6
-  - Jim's variance: 6186.99
-  - Aleks' variacnce: 1633.38
-  - Jim's Scores IQR: 124.25
-  - Aleks's Scores IQR: 60.75
-  - Jim's Scores Outliers Count: 0
-  - Aleks's Scores Outliers Count: 0
-    - Iterpretation: Jim's scores, having a substantially higher IQR, can imply that his performance is more inconsistent or subject to a wider range of influencing factors. Aleks's more consistent scores on the other hand, seen through a lower IQR, can suggest a narrower influence of external factors or a more stable performance across measurements.
+- Jim's mean: 47.9
+- Aleks' mean: 78.6
+- Jim's variance: 6186.99
+- Aleks' variacnce: 1633.38
+- Jim's Scores IQR: 124.25
+- Aleks's Scores IQR: 60.75
+- Jim's Scores Outliers Count: 0
+- Aleks's Scores Outliers Count: 0
+  - Iterpretation: Jim's scores, having a substantially higher IQR, can imply that his performance is more inconsistent or subject to a wider range of influencing factors. Aleks's more consistent scores on the other hand, seen through a lower IQR, can suggest a narrower influence of external factors or a more stable performance across measurements.
 
-- **Positive/Negative Ratio**:
+**Positive/Negative Ratio**:
 
-  - Jim has gone negative 30.0% of the time
-  - Aleks has gone negative 0.0% of the time
+- Jim has gone negative 30.0% of the time
+- Aleks has gone negative 0.0% of the time
 
-- **Data Visualizations**:
+**Data Visualizations**:
 
 ![histogram](https://github.com/aleksgeorgi/CanJimBeatAleksInRummy/blob/main/plots/scores_histogram.png)
 ![boxplot](https://github.com/aleksgeorgi/CanJimBeatAleksInRummy/blob/main/plots/scores_box_plt.png)
 
-- **Time Series Analysis**:
+**Time Series Analysis**:
 
-individual scores over time
+- individual scores over time:
+
 ![time series](https://github.com/aleksgeorgi/CanJimBeatAleksInRummy/blob/main/plots/scores_over_time_plt.png)
 
-running scores over time
+- running scores over time:
+
 ![running scores over time](https://github.com/aleksgeorgi/CanJimBeatAleksInRummy/blob/main/plots/running_scores_over_time.png)
 
-- **Linear Regression Prediction**:
-  - Jim is predicted to reach 3000 points at game number: [53]
-  - Aleks is predicted to reach 3000 points at game number: [44]
+**Linear Regression Prediction**:
+
+- Jim is predicted to reach 3000 points at game number: [53]
+- Aleks is predicted to reach 3000 points at game number: [44]
 
 ![prediction plot](https://github.com/aleksgeorgi/CanJimBeatAleksInRummy/blob/main/plots/rummy_winner_prediction.png)
 
