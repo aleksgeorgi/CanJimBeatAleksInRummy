@@ -94,7 +94,7 @@ def setup_datbase():
                 VALUES (%s, %s, %s)
                 """, (int(game_number), int(jim_score), int(aleks_score)))
 
-def get_all_data():
+def get_all_data(): #TODO REFACTOR USING SQLALCHEMY
     """Retrieve all data from the database."""
     conn = get_db_connection()
     cursor = conn.cursor(cursor_factory=RealDictCursor)
@@ -103,7 +103,7 @@ def get_all_data():
     conn.close()
     return data
 
-def add_data(df):
+def add_data(df): #TODO REFACTOR USING SQLALCHEMY
     """
     Add new rows to the raw_scores table from a DataFrame.
 
