@@ -32,12 +32,12 @@ Feb, 2024 ["Aces High: The Riveting Rummy Rivalry of Hackland vs. Georgievska"](
 - Jim's mean: 47.9
 - Aleks' mean: 78.6
 - Jim's variance: 6186.99 | stddev: 78.66
-- Aleks' variacnce: 1633.38 | stddev: 40.42
+- Aleks' variance: 1633.38 | stddev: 40.42
 - Jim's Scores IQR: 124.25
 - Aleks's Scores IQR: 60.75
 - Jim's Scores Outliers Count: 0
 - Aleks's Scores Outliers Count: 0
-  - Iterpretation: Jim's scores, having a substantially higher IQR, can imply that his performance is more inconsistent or subject to a wider range of influencing factors. Aleks's more consistent scores on the other hand, seen through a lower IQR, can suggest a narrower influence of external factors or a more stable performance across measurements.
+  - Interpretation: Jim's scores, having a substantially higher IQR, can imply that his performance is more inconsistent or subject to a wider range of influencing factors. Aleks's more consistent scores on the other hand, seen through a lower IQR, can suggest a narrower influence of external factors or a more stable performance across measurements.
 
 **Positive/Negative Ratio**:
 
