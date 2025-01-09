@@ -12,8 +12,8 @@ project/
 ├── migrations/               # Alembic folder for database migrations
 │   ├── versions/             # Versioned migration scripts
 │   ├── env.py                # Alembic environment setup
-│   ├── alembic.ini           # Alembic configuration file
-│
+|
+├── alembic.ini               # Alembic configuration file
 ├── config.py                 # Configuration for Flask app
 ├── requirements.txt          # Python dependencies
 ├── run.py                    # Entry point to run the app

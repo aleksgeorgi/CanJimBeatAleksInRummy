@@ -6,7 +6,7 @@ def create_app():
     app = Flask(__name__)
 
     # Set up database configuration
-    app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://<USER>:<PASSWORD>@<HOST>/<DB_NAME>'
+    app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://<USER>:<PASSWORD>@<HOST>/<DB_NAME>' # TODO env vars?
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
     # Initialize SQLAlchemy
