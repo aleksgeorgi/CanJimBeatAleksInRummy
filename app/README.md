@@ -1,5 +1,3 @@
-You can separate different aspects of your application:
-
 routes.py: For handling endpoints and route logic.
 db_utils.py: For database-related functions.
 models.py: For ORM models (e.g., SQLAlchemy).

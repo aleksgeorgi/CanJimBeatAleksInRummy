@@ -1,12 +1,17 @@
 # TODO: add logging 
 
-from flask import Blueprint, jsonify, request
+from flask import Blueprint, jsonify, request, render_template
 from .db_utils import get_all_data, add_data
 from .prediction.prediction_logic import make_prediction
 import pandas as pd
 
 # Create a Blueprint
 routes = Blueprint('routes', __name__)
+
+@routes.route('/')
+def home():
+    """Route to serve the home page."""
+    return render_template('index.html')
 
 @routes.route('/data', methods=['GET'])
 def get_data():
