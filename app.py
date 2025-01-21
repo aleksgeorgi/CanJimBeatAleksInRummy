@@ -21,18 +21,29 @@ logging.basicConfig(
 CERT_PATH = "certs/"
 os.makedirs(CERT_PATH, exist_ok=True)
 
+# Verify that certificates were saved correctly
 try:
-    logging.info("Decoding and saving SSL certificates.")
+    logging.info(f"Decoded certificates: {os.listdir(CERT_PATH)}")
+except Exception as e:
+    logging.error("Error listing decoded certificates.", exc_info=True)
+
     with open(os.path.join(CERT_PATH, "server-ca.pem"), "wb") as f:
         f.write(base64.b64decode(os.getenv("SERVER_CA")))
+    logging.info(f"SERVER_CA length: {len(os.getenv('SERVER_CA'))}")
+    logging.info(f"SERVER_CA: {os.getenv('SERVER_CA')}")
 
     with open(os.path.join(CERT_PATH, "client-cert.pem"), "wb") as f:
         f.write(base64.b64decode(os.getenv("CLIENT_CERT")))
 
     with open(os.path.join(CERT_PATH, "client-key.pem"), "wb") as f:
         f.write(base64.b64decode(os.getenv("CLIENT_KEY")))
+        
+    logging.info(f"SERVER_CA length: {len(os.getenv('SERVER_CA'))}")
+    logging.info(f"SERVER_CA: {os.getenv('SERVER_CA')}")
+
 
     logging.info("SSL certificates decoded and saved successfully.")
+    
 except Exception as e:
     logging.critical("Failed to decode and save SSL certificates.", exc_info=True)
     raise e
