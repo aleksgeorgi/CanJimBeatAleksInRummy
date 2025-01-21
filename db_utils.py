@@ -15,30 +15,34 @@ logging.basicConfig(
     ]
 )
 
-# Load environment variables
 load_dotenv()
-DB_HOST = os.getenv("DB_HOST")
-DB_USER = os.getenv("DB_USER")
-DB_PASSWORD = os.getenv("DB_PASSWORD")
-DB_NAME = os.getenv("DB_NAME")
+DB_HOST = os.getenv("DB_HOST", "35.224.65.167")  # Replace with your actual host
+DB_NAME = os.getenv("DB_NAME", "postgres")  # Replace with your actual database name
+DB_USER = os.getenv("DB_USER", "postgres")  # Replace with your username
+DB_PASSWORD = os.getenv("DB_PASSWORD")  # Replace with your actual password
+CERT_PATH = "certs/"  # Directory where your certificates are stored
 
 def get_db_connection():
-    """Create a database connection."""
+    """Create a secure database connection using SSL."""
     try:
-        logging.info("in get_db_connection Creating a database connection.")
+        logging.info("Establishing secure database connection...")
         connection = psycopg2.connect(
             host=DB_HOST,
             database=DB_NAME,
             user=DB_USER,
-            password=DB_PASSWORD
-            # sslmode="require"  # Enforces encrypted TLS connections
+            password=DB_PASSWORD,
+            port=5432,  # Default PostgreSQL port
+            sslmode="verify-ca",
+            sslrootcert=os.path.join(CERT_PATH, "server-ca.pem"),
+            sslcert=os.path.join(CERT_PATH, "client-cert.pem"),
+            sslkey=os.path.join(CERT_PATH, "client-key.pem")
         )
         logging.info("Database connection established successfully.")
         return connection
-    except psycopg2.Error as e:
-        logging.error("Error while connecting to the database.", exc_info=True)
-        raise e  # Re-raise the exception after logging it
-
+    except Exception as e:
+        logging.error("Error establishing database connection.", exc_info=True)
+        raise e
+    
 def get_all_data():
     """Retrieve all data from the database."""
     try:
