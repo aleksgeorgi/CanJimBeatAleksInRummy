@@ -17,6 +17,29 @@ logging.basicConfig(
     ]
 )
 
+from dotenv import load_dotenv
+
+load_dotenv()  # Load environment variables from .env
+
+def setup_google_credentials():
+    """Decode GOOGLE_APPLICATION_CREDENTIALS and save to a file."""
+    encoded_credentials = os.getenv("GOOGLE_APPLICATION_CREDENTIALS_BASE64")
+    if not encoded_credentials:
+        raise ValueError("GOOGLE_APPLICATION_CREDENTIALS_BASE64 environment variable is not set.")
+
+    decoded_credentials = base64.b64decode(encoded_credentials).decode('utf-8')
+
+    credentials_path = "google-credentials.json"
+    with open(credentials_path, "w") as f:
+        f.write(decoded_credentials)
+
+    os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = credentials_path
+    logging.info(f"Google credentials written to {credentials_path}")
+
+
+# Call this function at the start of your app
+setup_google_credentials()
+
 # Decode and save SSL certificates
 CERT_PATH = "certs/"
 os.makedirs(CERT_PATH, exist_ok=True)
@@ -83,13 +106,13 @@ def index():
         logging.error("An error occurred in the index route.", exc_info=True)
         return "An error occurred while processing your request. Please try again later.", 500
 
-
 if __name__ == '__main__':
     try:
         logging.info("Starting the Flask application.")
         app.run(debug=True)
     except Exception as e:
         logging.critical("Failed to start the Flask application.", exc_info=True)
+
 
 '''
 Testing the get request:
