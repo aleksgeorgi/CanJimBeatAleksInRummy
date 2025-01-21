@@ -1,4 +1,5 @@
 import os
+import time
 import logging
 from dotenv import load_dotenv
 import psycopg2
@@ -24,13 +25,13 @@ DB_NAME = os.getenv("DB_NAME")
 def get_db_connection():
     """Create a database connection."""
     try:
-        logging.info("Creating a database connection.")
+        logging.info("in get_db_connection Creating a database connection.")
         connection = psycopg2.connect(
             host=DB_HOST,
             database=DB_NAME,
             user=DB_USER,
-            password=DB_PASSWORD,
-            sslmode="require"  # Enforces encrypted TLS connections
+            password=DB_PASSWORD
+            # sslmode="require"  # Enforces encrypted TLS connections
         )
         logging.info("Database connection established successfully.")
         return connection
@@ -42,12 +43,15 @@ def get_all_data():
     """Retrieve all data from the database."""
     try:
         logging.info("Fetching all data from the database.")
+        start_time = time.time()
         conn = get_db_connection()
         cursor = conn.cursor(cursor_factory=RealDictCursor)
         cursor.execute("SELECT * FROM raw_scores;")
         data = cursor.fetchall()
         logging.info("Data fetched successfully.")
         conn.close()
+        end_time = time.time()
+        logging.info(f"Data fetched successfully in {end_time - start_time:.2f} seconds.")
         return data
     except psycopg2.Error as e:
         logging.error("Error while retrieving data from the database.", exc_info=True)
@@ -61,15 +65,15 @@ def get_all_data():
             logging.info("Database connection closed.")
 
 def convert_fetched_data_to_df(data):
-    """Convert fetched database records to pandas DataFrame."""
     try:
-        logging.info("Converting fetched data to pandas DataFrame.")
+        logging.info("Converting data to pandas DataFrame.")
         df = pd.DataFrame(data)
-        logging.info("Data converted to DataFrame successfully.")
+        logging.info(f"DataFrame created with shape: {df.shape}")
         return df
     except Exception as e:
         logging.error("Error while converting data to DataFrame.", exc_info=True)
-        raise e  # Re-raise the exception after logging it
+        raise e
+
 
 
 if __name__ == '__main__':
