@@ -19,12 +19,27 @@ logging.basicConfig(
     ]
 )
 
-def fetch_data():
+# Cache for fetched data and its hash
+CACHE = {
+    'data': None,
+    'data_hash': None,
+    'last_fetched': None,
+}
+
+def fetch_data(refresh=False):
+    """Fetch data from the database or use cached data."""
     try:
-        logging.info("Fetching and converting data.")
+        if not refresh and CACHE['data'] is not None:
+            logging.info("Using cached data.")
+            return CACHE['data']
+        
+        logging.info("Fetching and converting data from the database.")
         data = get_all_data()
         data = convert_fetched_data_to_df(data)
-        logging.info("Data fetched and converted successfully.")
+        CACHE['data'] = data
+        CACHE['data_hash'] = get_data_hash(data)
+        CACHE['last_fetched'] = datetime.now()
+        logging.info("Data fetched and cached successfully.")
         return data
     except Exception as e:
         logging.error("Error fetching or converting data.", exc_info=True)
@@ -48,7 +63,7 @@ def should_update_plot(save_path='static/images/scores_scatter.png', hash_path='
             logging.warning("No data available to check for updates.")
             return False
         
-        current_hash = get_data_hash(data)
+        current_hash = CACHE['data_hash']
         
         # If image doesn't exist, we should update
         if not os.path.exists(save_path):
@@ -98,7 +113,7 @@ def create_scatter_plot(save_path='static/images/scores_scatter.png', hash_path=
 
         # Save the data hash
         with open(hash_path, 'w') as f:
-            json.dump({'hash': get_data_hash(data), 'last_updated': datetime.now().isoformat()}, f)
+            json.dump({'hash': CACHE['data_hash'], 'last_updated': datetime.now().isoformat()}, f)
 
         logging.info("Scatter plot created and saved successfully.")
         return save_path
@@ -138,7 +153,7 @@ def create_histogram(save_path='static/images/scores_hist.png', hash_path='stati
 
         # Save the data hash
         with open(hash_path, 'w') as f:
-            json.dump({'hash': get_data_hash(data), 'last_updated': datetime.now().isoformat()}, f)
+            json.dump({'hash': CACHE['data_hash'], 'last_updated': datetime.now().isoformat()}, f)
 
         logging.info("Histogram created and saved successfully.")
         return save_path
