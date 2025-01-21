@@ -25,7 +25,7 @@ body {
 }
 
 .menu-panel {
-    width: 165px;
+    width: 140px;
     border: 1px solid #ccc;
     background-color: #EAE7E7;
     display: flex;
@@ -69,7 +69,7 @@ body {
 }
 
 .app-module-container {
-    width: 1000px;
+    width: 700px;
     flex-grow: 1;
     border: 1px solid #ccc;
     background-color: #f9e7cf;
@@ -84,23 +84,18 @@ body {
 #data,
 #current-prediction,
 #summary-statistics,
-#chat-bot {
+#chat-bot,
+#visualizations {
+    font-size: 10px;
     background-color: rgb(255, 251, 246);
     padding: 20px;
-    width: 950px;
+    width: 400px;
     height: 400px;
     border: 2px solid #333;
-    flex: 0 0 950px; /* This prevents the divs from growing or shrinking, maintaining 400px width */
+    flex: 0 0 400px; /* This prevents the divs from growing or shrinking, maintaining 400px width */
+
 }
 
-#visualizations {
-    background-color: rgb(255, 251, 246);
-    padding: 20px;
-    width: 950px;
-    height: 600px;
-    border: 2px solid #333;
-    flex: 0 0 950px; /* This prevents the divs from growing or shrinking, maintaining 400px width */
-}
 
 .module-body {
     height: calc(100% - 40px);  /* 40px accounts for the padding of parent (20px top + 20px bottom) */
@@ -128,7 +123,7 @@ body {
 }
 
 h1 {
-    font-size: 2.5em;
+    font-size: 25px;
     font-weight: bold;
     color: #333;
     text-align: center;
@@ -137,13 +132,17 @@ h1 {
 
 h3 {
     border: 1px solid #000000;
-    font-size: 1.5em;
+    font-size: 30px;
     font-family: Arial, sans-serif;
     font-weight: normal;
     font-size: 15px;
     color: #666;
     margin: 0.5em 0;
     padding: 10px;
+}
+
+h2 {
+    font-size: 12px;
 }
 
 table {
@@ -168,7 +167,6 @@ tr:nth-child(even) {
 
 
 
-
 #scatter-plot,
 #histogram {
     max-width: 100%;
@@ -176,5 +174,4 @@ tr:nth-child(even) {
     display: block;
     margin: 0 auto;
     object-fit: contain;
-
 }

@@ -1,23 +1,48 @@
 import os
+import logging
 from flask import Flask, render_template
 from db_utils import get_all_data
 from visualizations import create_scatter_plot
 
+# Initialize Flask app
 app = Flask(__name__)
+
+# Set up logging
+logging.basicConfig(
+    level=logging.INFO,
+    format="%(asctime)s [%(levelname)s] %(message)s",
+    handlers=[
+        logging.StreamHandler()  # Log to console
+    ]
+)
 
 @app.route('/')
 def index():
-    data = get_all_data()  # Fetch your data
-    os.makedirs('static/images', exist_ok=True)
+    try:
+        logging.info("Fetching data from the database.")
+        data = get_all_data()  # Fetch your data
+
+        logging.info("Ensuring static/images directory exists.")
+        os.makedirs('static/images', exist_ok=True)
+
+        logging.info("Creating scatter plot.")
+        create_scatter_plot()
+
+        logging.info("Rendering index.html with data.")
+        return render_template('index.html', data=data)
     
-    # generate the scatter plot
-    create_scatter_plot()
-    
-    return render_template('index.html', data=data)
+    except Exception as e:
+        logging.error("An error occurred in the index route.", exc_info=True)
+        return "An error occurred while processing your request. Please try again later.", 500
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    try:
+        logging.info("Starting the Flask application.")
+        app.run(debug=True)
+    except Exception as e:
+        logging.critical("Failed to start the Flask application.", exc_info=True)
+
 
 
 '''
