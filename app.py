@@ -21,29 +21,45 @@ logging.basicConfig(
 CERT_PATH = "certs/"
 os.makedirs(CERT_PATH, exist_ok=True)
 
-# Verify that certificates were saved correctly
 try:
-    logging.info(f"Decoded certificates: {os.listdir(CERT_PATH)}")
-except Exception as e:
-    logging.error("Error listing decoded certificates.", exc_info=True)
+    logging.info("Starting SSL certificate decoding.")
 
+    # Check and log the presence of environment variables
+    server_ca = os.getenv("SERVER_CA")
+    client_cert = os.getenv("CLIENT_CERT")
+    client_key = os.getenv("CLIENT_KEY")
+
+    if not server_ca or not client_cert or not client_key:
+        logging.error("One or more SSL certificate environment variables are missing.")
+        logging.error(f"SERVER_CA set: {server_ca is not None}")
+        logging.error(f"CLIENT_CERT set: {client_cert is not None}")
+        logging.error(f"CLIENT_KEY set: {client_key is not None}")
+        raise ValueError("Missing SSL certificate environment variables.")
+
+    # Decode and write server-ca.pem
+    server_ca_decoded = base64.b64decode(server_ca)
     with open(os.path.join(CERT_PATH, "server-ca.pem"), "wb") as f:
-        f.write(base64.b64decode(os.getenv("SERVER_CA")))
-    logging.info(f"SERVER_CA length: {len(os.getenv('SERVER_CA'))}")
-    logging.info(f"SERVER_CA: {os.getenv('SERVER_CA')}")
+        f.write(server_ca_decoded)
+        logging.info(f"server-ca.pem saved successfully. File size: {os.path.getsize(os.path.join(CERT_PATH, 'server-ca.pem'))}")
 
+    # Decode and write client-cert.pem
+    client_cert_decoded = base64.b64decode(client_cert)
     with open(os.path.join(CERT_PATH, "client-cert.pem"), "wb") as f:
-        f.write(base64.b64decode(os.getenv("CLIENT_CERT")))
+        f.write(client_cert_decoded)
+        logging.info(f"client-cert.pem saved successfully. File size: {os.path.getsize(os.path.join(CERT_PATH, 'client-cert.pem'))}")
 
+    # Decode and write client-key.pem
+    client_key_decoded = base64.b64decode(client_key)
     with open(os.path.join(CERT_PATH, "client-key.pem"), "wb") as f:
-        f.write(base64.b64decode(os.getenv("CLIENT_KEY")))
-        
-    logging.info(f"SERVER_CA length: {len(os.getenv('SERVER_CA'))}")
-    logging.info(f"SERVER_CA: {os.getenv('SERVER_CA')}")
+        f.write(client_key_decoded)
+        logging.info(f"client-key.pem saved successfully. File size: {os.path.getsize(os.path.join(CERT_PATH, 'client-key.pem'))}")
 
+    # Verify that all files were saved correctly
+    logging.info(f"Decoded certificates: {os.listdir(CERT_PATH)}")
+    for cert_file in os.listdir(CERT_PATH):
+        cert_path = os.path.join(CERT_PATH, cert_file)
+        logging.info(f"File {cert_file} size: {os.path.getsize(cert_path)}")
 
-    logging.info("SSL certificates decoded and saved successfully.")
-    
 except Exception as e:
     logging.critical("Failed to decode and save SSL certificates.", exc_info=True)
     raise e
@@ -74,7 +90,6 @@ if __name__ == '__main__':
         app.run(debug=True)
     except Exception as e:
         logging.critical("Failed to start the Flask application.", exc_info=True)
-
 
 '''
 Testing the get request:
