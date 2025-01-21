@@ -10,6 +10,7 @@
     <div class="app-header-container">
         <header class="app-header-text">
             <h1>Can Jim Beat Aleks In Rummy?</h1>
+            ~!~ website in progress ~!~
         </header>
     </div>
 
@@ -33,23 +34,54 @@
             </nav>
         </div>
 
+
         <div class="app-module-container">
             <div id="data">
                 <div class="module-header">
                     <h4>Current data:</h4>
                 </div>
                 <div class="module-body">
-                    this is where the data stream will be visible from GCP Cloud SQL
+                    {% if data %}
+                        <table>
+                            <thead>
+                                <tr>
+                                    {% for column in data[0].keys() %}
+                                        <th>{{ column }}</th>
+                                    {% endfor %}
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for row in data %}
+                                    <tr>
+                                        {% for value in row.values() %}
+                                            <td>{{ value }}</td>
+                                        {% endfor %}
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    {% else %}
+                        <p>No data available</p>
+                    {% endif %}
                 </div>
             </div>
-            <div id="current-prediction">
+            <div id="visualizations">
+                <div class="module-header">
+                    <h4>Data Visualizations:</h4>
+                </div>
+                <div class="module-body">
+                    <img id="scatter-plot" src="/static/images/scores_scatter.png" alt="Jim and Aleks Scores Over Time">
+                    <img id="histogram" src="/static/images/scores_hist.png" at="Jim and Aleks histogram">
+                </div>
+            </div>    
+            <!-- <div id="current-prediction">
                 <div class="module-header">
                     <h4>Current prediction:</h4>
                 </div>
                 <div class="module-body">
                     No Never
                 </div>
-            </div>
+            </div>    -->
             <div id="summary-statistics">
                 <div class="module-header">
                     <h4>summary statistics</h4>

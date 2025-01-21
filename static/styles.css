@@ -13,7 +13,7 @@ body {
 .app-header-container {
     background-color: #FAF9D8;
     text-align: center;
-    padding: 1em;
+    padding: 5px;
     font-size: 1.5em;
     font-weight: bold;
     border-bottom: 1px solid #ccc;
@@ -69,7 +69,7 @@ body {
 }
 
 .app-module-container {
-    width: 800px;
+    width: 1000px;
     flex-grow: 1;
     border: 1px solid #ccc;
     background-color: #f9e7cf;
@@ -87,10 +87,44 @@ body {
 #chat-bot {
     background-color: rgb(255, 251, 246);
     padding: 20px;
-    width: 400px;
+    width: 950px;
     height: 400px;
     border: 2px solid #333;
-    flex: 0 0 400px; /* This prevents the divs from growing or shrinking, maintaining 400px width */
+    flex: 0 0 950px; /* This prevents the divs from growing or shrinking, maintaining 400px width */
+}
+
+#visualizations {
+    background-color: rgb(255, 251, 246);
+    padding: 20px;
+    width: 950px;
+    height: 600px;
+    border: 2px solid #333;
+    flex: 0 0 950px; /* This prevents the divs from growing or shrinking, maintaining 400px width */
+}
+
+.module-body {
+    height: calc(100% - 40px);  /* 40px accounts for the padding of parent (20px top + 20px bottom) */
+    max-width: 1000px;
+    overflow-y: auto;
+    overflow-x: auto;
+}
+
+/* Optional: Style the scrollbar for webkit browsers */
+.module-body::-webkit-scrollbar {
+    width: 8px;
+}
+
+.module-body::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+.module-body::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 4px;
+}
+
+.module-body::-webkit-scrollbar-thumb:hover {
+    background: #555;
 }
 
 h1 {
@@ -110,4 +144,37 @@ h3 {
     color: #666;
     margin: 0.5em 0;
     padding: 10px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 10px 0;
+}
+
+th, td {
+    padding: 8px;
+    text-align: left;
+    border: 1px solid #ddd;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
+tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+
+
+
+#scatter-plot,
+#histogram {
+    max-width: 100%;
+    max-height: 100%;
+    display: block;
+    margin: 0 auto;
+    object-fit: contain;
+
 }

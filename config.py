@@ -1,1 +1,0 @@
-#TODO Configuration for different environments
