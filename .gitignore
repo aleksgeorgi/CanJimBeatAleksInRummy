@@ -5,6 +5,7 @@ __pycache__/
 app/__pycache__/
 *.py[cod]
 *$py.class
+app/prediction/__pycache__/
 
 # C extensions
 *.so
@@ -138,6 +139,8 @@ venv/
 ENV/
 env.bak/
 venv.bak/
+certs/*
+
 
 # Spyder project settings
 .spyderproject
@@ -172,3 +175,5 @@ cython_debug/
 
 # PyPI configuration file
 .pypirc
+
+*.json
