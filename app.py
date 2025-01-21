@@ -1,5 +1,6 @@
 import os
 import logging
+import base64
 from flask import Flask, render_template
 from db_utils import get_all_data
 from visualizations import create_scatter_plot
@@ -15,6 +16,26 @@ logging.basicConfig(
         logging.StreamHandler()  # Log to console
     ]
 )
+
+# Decode and save SSL certificates
+CERT_PATH = "certs/"
+os.makedirs(CERT_PATH, exist_ok=True)
+
+try:
+    logging.info("Decoding and saving SSL certificates.")
+    with open(os.path.join(CERT_PATH, "server-ca.pem"), "wb") as f:
+        f.write(base64.b64decode(os.getenv("SERVER_CA")))
+
+    with open(os.path.join(CERT_PATH, "client-cert.pem"), "wb") as f:
+        f.write(base64.b64decode(os.getenv("CLIENT_CERT")))
+
+    with open(os.path.join(CERT_PATH, "client-key.pem"), "wb") as f:
+        f.write(base64.b64decode(os.getenv("CLIENT_KEY")))
+
+    logging.info("SSL certificates decoded and saved successfully.")
+except Exception as e:
+    logging.critical("Failed to decode and save SSL certificates.", exc_info=True)
+    raise e
 
 @app.route('/')
 def index():
@@ -42,7 +63,6 @@ if __name__ == '__main__':
         app.run(debug=True)
     except Exception as e:
         logging.critical("Failed to start the Flask application.", exc_info=True)
-
 
 
 '''

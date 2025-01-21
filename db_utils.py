@@ -5,22 +5,24 @@ from dotenv import load_dotenv
 import psycopg2
 from psycopg2.extras import RealDictCursor
 import pandas as pd
+import google.auth 
 
 # Set up logging
 logging.basicConfig(
     level=logging.INFO,
     format="%(asctime)s [%(levelname)s] %(message)s",
     handlers=[
-        logging.StreamHandler()  # Log to console
+        logging.StreamHandler() 
     ]
 )
 
 load_dotenv()
-DB_HOST = os.getenv("DB_HOST", "35.224.65.167")  # Replace with your actual host
-DB_NAME = os.getenv("DB_NAME", "postgres")  # Replace with your actual database name
-DB_USER = os.getenv("DB_USER", "postgres")  # Replace with your username
-DB_PASSWORD = os.getenv("DB_PASSWORD")  # Replace with your actual password
-CERT_PATH = "certs/"  # Directory where your certificates are stored
+# Database credentials and paths to certificates
+DB_HOST = os.getenv("DB_HOST")  # Your database public IP
+DB_NAME = os.getenv("DB_NAME")  # Your database name
+DB_USER = os.getenv("DB_USER")  # Your database user
+DB_PASSWORD = os.getenv("DB_PASSWORD")  # Your database password
+CERT_PATH = "certs/"  # Path to your certificate files
 
 def get_db_connection():
     """Create a secure database connection using SSL."""
@@ -32,7 +34,7 @@ def get_db_connection():
             user=DB_USER,
             password=DB_PASSWORD,
             port=5432,  # Default PostgreSQL port
-            sslmode="verify-ca",
+            sslmode="verify-ca",  # Enforce SSL certificate validation
             sslrootcert=os.path.join(CERT_PATH, "server-ca.pem"),
             sslcert=os.path.join(CERT_PATH, "client-cert.pem"),
             sslkey=os.path.join(CERT_PATH, "client-key.pem")
