@@ -12,13 +12,15 @@ DB_PASSWORD = os.getenv("DB_PASSWORD")
 DB_NAME = os.getenv("DB_NAME")
 
 
+
 def get_db_connection():
     """Create a database connection."""
     return psycopg2.connect(
         host=DB_HOST,
         database=DB_NAME,
         user=DB_USER,
-        password=DB_PASSWORD
+        password=DB_PASSWORD,
+        sslmode="require"  # Enforces encrypted TLS connections
     )
 
 
