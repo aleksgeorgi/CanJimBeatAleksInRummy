@@ -46,26 +46,34 @@ Feb, 2024 ["Aces High: The Riveting Rummy Rivalry of Hackland vs. Georgievska"](
 
 **Data Visualizations**:
 
-![histogram](https://github.com/aleksgeorgi/CanJimBeatAleksInRummy/blob/main/plots/scores_histogram.png)
-![boxplot](https://github.com/aleksgeorgi/CanJimBeatAleksInRummy/blob/main/plots/scores_box_plt.png)
+![histogram](https://github.com/aleksgeorgi/CanJimBeatAleksInRummy/blob/prod/plots/scores_histogram.png)
+![boxplot](https://github.com/aleksgeorgi/CanJimBeatAleksInRummy/blob/prod/plots/scores_box_plt.png)
 
 **Time Series Analysis**:
 
 - individual scores over time:
 
-![time series](https://github.com/aleksgeorgi/CanJimBeatAleksInRummy/blob/main/plots/scores_over_time_plt.png)
+![time series](https://github.com/aleksgeorgi/CanJimBeatAleksInRummy/blob/prod/plots/scores_over_time_plt.png)
 
 - running scores over time:
 
-![running scores over time](https://github.com/aleksgeorgi/CanJimBeatAleksInRummy/blob/main/plots/running_scores_over_time.png)
+![running scores over time](https://github.com/aleksgeorgi/CanJimBeatAleksInRummy/blob/prod/plots/running_scores_over_time.png)
 
 **Linear Regression Prediction**:
 
 - Jim is predicted to reach 3000 points at game number: [53]
 - Aleks is predicted to reach 3000 points at game number: [44]
 
-![prediction plot](https://github.com/aleksgeorgi/CanJimBeatAleksInRummy/blob/main/plots/rummy_winner_prediction.png)
+![prediction plot](https://github.com/aleksgeorgi/CanJimBeatAleksInRummy/blob/prod/plots/rummy_winner_prediction.png)
 
 ## Conclusion
 
 Will Aleks maintain her winning streak, or will Jim stage a comeback? The models have spoken, but fate has the final say. Check back for an update!
+
+## Future
+Aleks is currently developing a front end to showcase the project and expand on futher developments:
+- GCP Cloud storage to show the live data as new games are added
+- An updated prediction based on the data 
+- A chatbot that is trained on the project and data and can banter with site visitors about it
+
+Website under construction: [https://canjimbeataleksinrummy.com/](https://canjimbeataleksinrummy.com/)
